@@ -1,0 +1,738 @@
+{
+ "cells": [
+  {
+   "cell_type": "markdown",
+   "id": "9e56ce25-4970-4239-842e-9db9574c6802",
+   "metadata": {},
+   "source": [
+    "Jupyter Notebook Trabalho da Faculdade"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 3,
+   "id": "09e91be4-d2c4-4563-b682-d0f0750f343a",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "import pandas as pd"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 5,
+   "id": "7d2f27b1-9347-4643-b5d5-ee60b9e37ad6",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "df = pd.read_excel('excel.xls')"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "f94cb6eb-ae80-4246-a986-5a02983a479f",
+   "metadata": {},
+   "source": [
+    "Quantidade de Colunas"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 8,
+   "id": "84ed24b3-4052-4c80-9d50-19b9d382f38e",
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "25"
+      ]
+     },
+     "execution_count": 8,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "df.shape[1]"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "1c4aac20-2071-47b5-98da-19ae92d0b9a3",
+   "metadata": {},
+   "source": [
+    "Quantidade de Linhas"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 11,
+   "id": "4daf3480-c22a-44cf-a93d-eb04de82b640",
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "30000"
+      ]
+     },
+     "execution_count": 11,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "df.shape[0]"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "f7fb2cc9-b452-4ede-8463-fa64f7b8009f",
+   "metadata": {},
+   "source": [
+    "Características"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 16,
+   "id": "ef81e94f-b49a-4191-8780-e37a7f437d6b",
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "ID                            object\n",
+       "LIMIT_BAL                      int64\n",
+       "SEX                            int64\n",
+       "EDUCATION                      int64\n",
+       "MARRIAGE                       int64\n",
+       "AGE                            int64\n",
+       "PAY_1                         object\n",
+       "PAY_2                          int64\n",
+       "PAY_3                          int64\n",
+       "PAY_4                          int64\n",
+       "PAY_5                          int64\n",
+       "PAY_6                          int64\n",
+       "BILL_AMT1                      int64\n",
+       "BILL_AMT2                      int64\n",
+       "BILL_AMT3                      int64\n",
+       "BILL_AMT4                      int64\n",
+       "BILL_AMT5                      int64\n",
+       "BILL_AMT6                      int64\n",
+       "PAY_AMT1                       int64\n",
+       "PAY_AMT2                       int64\n",
+       "PAY_AMT3                       int64\n",
+       "PAY_AMT4                       int64\n",
+       "PAY_AMT5                       int64\n",
+       "PAY_AMT6                       int64\n",
+       "default payment next month     int64\n",
+       "dtype: object"
+      ]
+     },
+     "execution_count": 16,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "df.dtypes"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "5d5077e7-cbc4-475d-9bf1-86a35c7d03fe",
+   "metadata": {},
+   "source": [
+    "Aparência dos Dados"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 19,
+   "id": "c4800f8c-124c-4ae9-b1cc-56ec6ef9f27c",
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/html": [
+       "<div>\n",
+       "<style scoped>\n",
+       "    .dataframe tbody tr th:only-of-type {\n",
+       "        vertical-align: middle;\n",
+       "    }\n",
+       "\n",
+       "    .dataframe tbody tr th {\n",
+       "        vertical-align: top;\n",
+       "    }\n",
+       "\n",
+       "    .dataframe thead th {\n",
+       "        text-align: right;\n",
+       "    }\n",
+       "</style>\n",
+       "<table border=\"1\" class=\"dataframe\">\n",
+       "  <thead>\n",
+       "    <tr style=\"text-align: right;\">\n",
+       "      <th></th>\n",
+       "      <th>LIMIT_BAL</th>\n",
+       "      <th>SEX</th>\n",
+       "      <th>EDUCATION</th>\n",
+       "      <th>MARRIAGE</th>\n",
+       "      <th>AGE</th>\n",
+       "      <th>PAY_2</th>\n",
+       "      <th>PAY_3</th>\n",
+       "      <th>PAY_4</th>\n",
+       "      <th>PAY_5</th>\n",
+       "      <th>PAY_6</th>\n",
+       "      <th>...</th>\n",
+       "      <th>BILL_AMT4</th>\n",
+       "      <th>BILL_AMT5</th>\n",
+       "      <th>BILL_AMT6</th>\n",
+       "      <th>PAY_AMT1</th>\n",
+       "      <th>PAY_AMT2</th>\n",
+       "      <th>PAY_AMT3</th>\n",
+       "      <th>PAY_AMT4</th>\n",
+       "      <th>PAY_AMT5</th>\n",
+       "      <th>PAY_AMT6</th>\n",
+       "      <th>default payment next month</th>\n",
+       "    </tr>\n",
+       "  </thead>\n",
+       "  <tbody>\n",
+       "    <tr>\n",
+       "      <th>count</th>\n",
+       "      <td>30000.000000</td>\n",
+       "      <td>30000.000000</td>\n",
+       "      <td>30000.000000</td>\n",
+       "      <td>30000.000000</td>\n",
+       "      <td>30000.000000</td>\n",
+       "      <td>30000.000000</td>\n",
+       "      <td>30000.000000</td>\n",
+       "      <td>30000.000000</td>\n",
+       "      <td>30000.000000</td>\n",
+       "      <td>30000.000000</td>\n",
+       "      <td>...</td>\n",
+       "      <td>30000.000000</td>\n",
+       "      <td>30000.000000</td>\n",
+       "      <td>30000.000000</td>\n",
+       "      <td>30000.000000</td>\n",
+       "      <td>3.000000e+04</td>\n",
+       "      <td>30000.000000</td>\n",
+       "      <td>30000.000000</td>\n",
+       "      <td>30000.000000</td>\n",
+       "      <td>30000.000000</td>\n",
+       "      <td>30000.000000</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>mean</th>\n",
+       "      <td>165760.989333</td>\n",
+       "      <td>1.586500</td>\n",
+       "      <td>1.833333</td>\n",
+       "      <td>1.535900</td>\n",
+       "      <td>35.108800</td>\n",
+       "      <td>-0.132867</td>\n",
+       "      <td>-0.164333</td>\n",
+       "      <td>-0.219300</td>\n",
+       "      <td>-0.263900</td>\n",
+       "      <td>-0.288033</td>\n",
+       "      <td>...</td>\n",
+       "      <td>42791.362167</td>\n",
+       "      <td>39884.398167</td>\n",
+       "      <td>38480.350933</td>\n",
+       "      <td>5613.321500</td>\n",
+       "      <td>5.855410e+03</td>\n",
+       "      <td>5174.387967</td>\n",
+       "      <td>4776.089733</td>\n",
+       "      <td>4754.749200</td>\n",
+       "      <td>5164.223267</td>\n",
+       "      <td>0.218733</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>std</th>\n",
+       "      <td>130158.590432</td>\n",
+       "      <td>0.513348</td>\n",
+       "      <td>0.807699</td>\n",
+       "      <td>0.542698</td>\n",
+       "      <td>9.851592</td>\n",
+       "      <td>1.191215</td>\n",
+       "      <td>1.191096</td>\n",
+       "      <td>1.162348</td>\n",
+       "      <td>1.127519</td>\n",
+       "      <td>1.144981</td>\n",
+       "      <td>...</td>\n",
+       "      <td>64090.316188</td>\n",
+       "      <td>60606.644833</td>\n",
+       "      <td>59406.836932</td>\n",
+       "      <td>16539.094312</td>\n",
+       "      <td>2.299256e+04</td>\n",
+       "      <td>17565.538305</td>\n",
+       "      <td>15532.893047</td>\n",
+       "      <td>15239.070708</td>\n",
+       "      <td>17712.664703</td>\n",
+       "      <td>0.413394</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>min</th>\n",
+       "      <td>0.000000</td>\n",
+       "      <td>0.000000</td>\n",
+       "      <td>0.000000</td>\n",
+       "      <td>0.000000</td>\n",
+       "      <td>0.000000</td>\n",
+       "      <td>-2.000000</td>\n",
+       "      <td>-2.000000</td>\n",
+       "      <td>-2.000000</td>\n",
+       "      <td>-2.000000</td>\n",
+       "      <td>-2.000000</td>\n",
+       "      <td>...</td>\n",
+       "      <td>-170000.000000</td>\n",
+       "      <td>-81334.000000</td>\n",
+       "      <td>-339603.000000</td>\n",
+       "      <td>0.000000</td>\n",
+       "      <td>0.000000e+00</td>\n",
+       "      <td>0.000000</td>\n",
+       "      <td>0.000000</td>\n",
+       "      <td>0.000000</td>\n",
+       "      <td>0.000000</td>\n",
+       "      <td>0.000000</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>25%</th>\n",
+       "      <td>50000.000000</td>\n",
+       "      <td>1.000000</td>\n",
+       "      <td>1.000000</td>\n",
+       "      <td>1.000000</td>\n",
+       "      <td>28.000000</td>\n",
+       "      <td>-1.000000</td>\n",
+       "      <td>-1.000000</td>\n",
+       "      <td>-1.000000</td>\n",
+       "      <td>-1.000000</td>\n",
+       "      <td>-1.000000</td>\n",
+       "      <td>...</td>\n",
+       "      <td>2034.000000</td>\n",
+       "      <td>1534.000000</td>\n",
+       "      <td>1080.000000</td>\n",
+       "      <td>836.000000</td>\n",
+       "      <td>7.217500e+02</td>\n",
+       "      <td>371.000000</td>\n",
+       "      <td>223.000000</td>\n",
+       "      <td>170.750000</td>\n",
+       "      <td>9.000000</td>\n",
+       "      <td>0.000000</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>50%</th>\n",
+       "      <td>140000.000000</td>\n",
+       "      <td>2.000000</td>\n",
+       "      <td>2.000000</td>\n",
+       "      <td>2.000000</td>\n",
+       "      <td>34.000000</td>\n",
+       "      <td>0.000000</td>\n",
+       "      <td>0.000000</td>\n",
+       "      <td>0.000000</td>\n",
+       "      <td>0.000000</td>\n",
+       "      <td>0.000000</td>\n",
+       "      <td>...</td>\n",
+       "      <td>18759.500000</td>\n",
+       "      <td>17835.500000</td>\n",
+       "      <td>16643.000000</td>\n",
+       "      <td>2084.500000</td>\n",
+       "      <td>2.000000e+03</td>\n",
+       "      <td>1776.000000</td>\n",
+       "      <td>1500.000000</td>\n",
+       "      <td>1500.000000</td>\n",
+       "      <td>1500.000000</td>\n",
+       "      <td>0.000000</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>75%</th>\n",
+       "      <td>240000.000000</td>\n",
+       "      <td>2.000000</td>\n",
+       "      <td>2.000000</td>\n",
+       "      <td>2.000000</td>\n",
+       "      <td>41.000000</td>\n",
+       "      <td>0.000000</td>\n",
+       "      <td>0.000000</td>\n",
+       "      <td>0.000000</td>\n",
+       "      <td>0.000000</td>\n",
+       "      <td>0.000000</td>\n",
+       "      <td>...</td>\n",
+       "      <td>53572.250000</td>\n",
+       "      <td>49804.000000</td>\n",
+       "      <td>48863.500000</td>\n",
+       "      <td>5000.000000</td>\n",
+       "      <td>5.000000e+03</td>\n",
+       "      <td>4500.000000</td>\n",
+       "      <td>4000.000000</td>\n",
+       "      <td>4000.000000</td>\n",
+       "      <td>4000.000000</td>\n",
+       "      <td>0.000000</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>max</th>\n",
+       "      <td>1000000.000000</td>\n",
+       "      <td>2.000000</td>\n",
+       "      <td>6.000000</td>\n",
+       "      <td>3.000000</td>\n",
+       "      <td>79.000000</td>\n",
+       "      <td>8.000000</td>\n",
+       "      <td>8.000000</td>\n",
+       "      <td>8.000000</td>\n",
+       "      <td>8.000000</td>\n",
+       "      <td>8.000000</td>\n",
+       "      <td>...</td>\n",
+       "      <td>891586.000000</td>\n",
+       "      <td>927171.000000</td>\n",
+       "      <td>961664.000000</td>\n",
+       "      <td>873552.000000</td>\n",
+       "      <td>1.684259e+06</td>\n",
+       "      <td>896040.000000</td>\n",
+       "      <td>621000.000000</td>\n",
+       "      <td>426529.000000</td>\n",
+       "      <td>528666.000000</td>\n",
+       "      <td>1.000000</td>\n",
+       "    </tr>\n",
+       "  </tbody>\n",
+       "</table>\n",
+       "<p>8 rows × 23 columns</p>\n",
+       "</div>"
+      ],
+      "text/plain": [
+       "            LIMIT_BAL           SEX     EDUCATION      MARRIAGE           AGE  \\\n",
+       "count    30000.000000  30000.000000  30000.000000  30000.000000  30000.000000   \n",
+       "mean    165760.989333      1.586500      1.833333      1.535900     35.108800   \n",
+       "std     130158.590432      0.513348      0.807699      0.542698      9.851592   \n",
+       "min          0.000000      0.000000      0.000000      0.000000      0.000000   \n",
+       "25%      50000.000000      1.000000      1.000000      1.000000     28.000000   \n",
+       "50%     140000.000000      2.000000      2.000000      2.000000     34.000000   \n",
+       "75%     240000.000000      2.000000      2.000000      2.000000     41.000000   \n",
+       "max    1000000.000000      2.000000      6.000000      3.000000     79.000000   \n",
+       "\n",
+       "              PAY_2         PAY_3         PAY_4         PAY_5         PAY_6  \\\n",
+       "count  30000.000000  30000.000000  30000.000000  30000.000000  30000.000000   \n",
+       "mean      -0.132867     -0.164333     -0.219300     -0.263900     -0.288033   \n",
+       "std        1.191215      1.191096      1.162348      1.127519      1.144981   \n",
+       "min       -2.000000     -2.000000     -2.000000     -2.000000     -2.000000   \n",
+       "25%       -1.000000     -1.000000     -1.000000     -1.000000     -1.000000   \n",
+       "50%        0.000000      0.000000      0.000000      0.000000      0.000000   \n",
+       "75%        0.000000      0.000000      0.000000      0.000000      0.000000   \n",
+       "max        8.000000      8.000000      8.000000      8.000000      8.000000   \n",
+       "\n",
+       "       ...      BILL_AMT4      BILL_AMT5      BILL_AMT6       PAY_AMT1  \\\n",
+       "count  ...   30000.000000   30000.000000   30000.000000   30000.000000   \n",
+       "mean   ...   42791.362167   39884.398167   38480.350933    5613.321500   \n",
+       "std    ...   64090.316188   60606.644833   59406.836932   16539.094312   \n",
+       "min    ... -170000.000000  -81334.000000 -339603.000000       0.000000   \n",
+       "25%    ...    2034.000000    1534.000000    1080.000000     836.000000   \n",
+       "50%    ...   18759.500000   17835.500000   16643.000000    2084.500000   \n",
+       "75%    ...   53572.250000   49804.000000   48863.500000    5000.000000   \n",
+       "max    ...  891586.000000  927171.000000  961664.000000  873552.000000   \n",
+       "\n",
+       "           PAY_AMT2       PAY_AMT3       PAY_AMT4       PAY_AMT5  \\\n",
+       "count  3.000000e+04   30000.000000   30000.000000   30000.000000   \n",
+       "mean   5.855410e+03    5174.387967    4776.089733    4754.749200   \n",
+       "std    2.299256e+04   17565.538305   15532.893047   15239.070708   \n",
+       "min    0.000000e+00       0.000000       0.000000       0.000000   \n",
+       "25%    7.217500e+02     371.000000     223.000000     170.750000   \n",
+       "50%    2.000000e+03    1776.000000    1500.000000    1500.000000   \n",
+       "75%    5.000000e+03    4500.000000    4000.000000    4000.000000   \n",
+       "max    1.684259e+06  896040.000000  621000.000000  426529.000000   \n",
+       "\n",
+       "            PAY_AMT6  default payment next month  \n",
+       "count   30000.000000                30000.000000  \n",
+       "mean     5164.223267                    0.218733  \n",
+       "std     17712.664703                    0.413394  \n",
+       "min         0.000000                    0.000000  \n",
+       "25%         9.000000                    0.000000  \n",
+       "50%      1500.000000                    0.000000  \n",
+       "75%      4000.000000                    0.000000  \n",
+       "max    528666.000000                    1.000000  \n",
+       "\n",
+       "[8 rows x 23 columns]"
+      ]
+     },
+     "execution_count": 19,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "df.describe()"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 29,
+   "id": "176f6cef-bea7-486d-8393-250c00dc6fd0",
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "LIMIT_BAL\n",
+       "50000      3328\n",
+       "20000      1950\n",
+       "30000      1597\n",
+       "80000      1552\n",
+       "200000     1517\n",
+       "           ... \n",
+       "730000        2\n",
+       "1000000       1\n",
+       "327680        1\n",
+       "760000        1\n",
+       "690000        1\n",
+       "Name: count, Length: 82, dtype: int64"
+      ]
+     },
+     "execution_count": 29,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "df['LIMIT_BAL'].value_counts()"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 31,
+   "id": "b3d9e1fa-6629-4010-bbfd-e1a64c34de02",
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "SEX\n",
+       "2    17910\n",
+       "1    11775\n",
+       "0      315\n",
+       "Name: count, dtype: int64"
+      ]
+     },
+     "execution_count": 31,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "df['SEX'].value_counts()"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 33,
+   "id": "e5535e08-2a5e-4395-9f9e-5bbe5776f257",
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "EDUCATION\n",
+       "2    13884\n",
+       "1    10474\n",
+       "3     4867\n",
+       "0      329\n",
+       "5      275\n",
+       "4      122\n",
+       "6       49\n",
+       "Name: count, dtype: int64"
+      ]
+     },
+     "execution_count": 33,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "df['EDUCATION'].value_counts()"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 35,
+   "id": "b76d1c34-279b-40df-8865-2b24b25382cb",
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "MARRIAGE\n",
+       "2    15810\n",
+       "1    13503\n",
+       "0      369\n",
+       "3      318\n",
+       "Name: count, dtype: int64"
+      ]
+     },
+     "execution_count": 35,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "df['MARRIAGE'].value_counts()"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 37,
+   "id": "97bf2d22-2632-4845-b14e-88dd8350804e",
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "AGE\n",
+       "29    1592\n",
+       "27    1466\n",
+       "28    1394\n",
+       "30    1388\n",
+       "26    1243\n",
+       "31    1205\n",
+       "25    1176\n",
+       "34    1152\n",
+       "32    1144\n",
+       "33    1137\n",
+       "24    1113\n",
+       "35    1098\n",
+       "36    1095\n",
+       "37    1027\n",
+       "39     941\n",
+       "38     936\n",
+       "23     913\n",
+       "40     861\n",
+       "41     815\n",
+       "42     788\n",
+       "44     695\n",
+       "43     660\n",
+       "45     611\n",
+       "46     566\n",
+       "22     553\n",
+       "47     498\n",
+       "48     462\n",
+       "49     446\n",
+       "50     405\n",
+       "51     336\n",
+       "53     324\n",
+       "0      315\n",
+       "52     299\n",
+       "54     243\n",
+       "55     203\n",
+       "56     175\n",
+       "58     121\n",
+       "57     121\n",
+       "59      82\n",
+       "21      67\n",
+       "60      65\n",
+       "61      56\n",
+       "62      42\n",
+       "63      31\n",
+       "64      31\n",
+       "66      25\n",
+       "65      23\n",
+       "67      16\n",
+       "69      15\n",
+       "70      10\n",
+       "68       5\n",
+       "73       4\n",
+       "72       3\n",
+       "75       3\n",
+       "71       3\n",
+       "79       1\n",
+       "74       1\n",
+       "Name: count, dtype: int64"
+      ]
+     },
+     "execution_count": 37,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "df['AGE'].value_counts()"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "4eb4f8db-0334-4c9d-bfb3-1bf1cf31e3c3",
+   "metadata": {},
+   "source": [
+    "Dados Faltando"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 42,
+   "id": "d20b3a47-260a-419e-822e-aa2bb516587f",
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "ID                            0\n",
+       "LIMIT_BAL                     0\n",
+       "SEX                           0\n",
+       "EDUCATION                     0\n",
+       "MARRIAGE                      0\n",
+       "AGE                           0\n",
+       "PAY_1                         0\n",
+       "PAY_2                         0\n",
+       "PAY_3                         0\n",
+       "PAY_4                         0\n",
+       "PAY_5                         0\n",
+       "PAY_6                         0\n",
+       "BILL_AMT1                     0\n",
+       "BILL_AMT2                     0\n",
+       "BILL_AMT3                     0\n",
+       "BILL_AMT4                     0\n",
+       "BILL_AMT5                     0\n",
+       "BILL_AMT6                     0\n",
+       "PAY_AMT1                      0\n",
+       "PAY_AMT2                      0\n",
+       "PAY_AMT3                      0\n",
+       "PAY_AMT4                      0\n",
+       "PAY_AMT5                      0\n",
+       "PAY_AMT6                      0\n",
+       "default payment next month    0\n",
+       "dtype: int64"
+      ]
+     },
+     "execution_count": 42,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "df.isnull().sum()"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "id": "2a50a30f-cdad-4373-8672-ac43aaba9d40",
+   "metadata": {},
+   "outputs": [],
+   "source": []
+  }
+ ],
+ "metadata": {
+  "kernelspec": {
+   "display_name": "Python [conda env:base] *",
+   "language": "python",
+   "name": "conda-base-py"
+  },
+  "language_info": {
+   "codemirror_mode": {
+    "name": "ipython",
+    "version": 3
+   },
+   "file_extension": ".py",
+   "mimetype": "text/x-python",
+   "name": "python",
+   "nbconvert_exporter": "python",
+   "pygments_lexer": "ipython3",
+   "version": "3.12.7"
+  }
+ },
+ "nbformat": 4,
+ "nbformat_minor": 5
+}
